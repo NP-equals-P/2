@@ -5,6 +5,12 @@ public class Sinistro {
 	private String endereco;
 	private static int contador = 0;
 	
+	public Sinistro (int id, String data, String endereco) {
+		this.id = id;
+		this.data = data;
+		this.endereco = endereco;
+	}
+	
 	public String getEndereco() {
 		return endereco;
 	}

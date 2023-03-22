@@ -6,6 +6,14 @@ public class Cliente {
 	private int idade;
 	private String endereco;
 	
+	public Cliente (String nome, String cpf, String dataNascimento, int idade, String endereco) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+		this.idade = idade;
+		this.endereco = endereco;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -54,7 +62,7 @@ public class Cliente {
 		}
 		
 		int cpfNumerico = Integer.parseInt(cpf);
-		long divisor = 11111111111;
+		long divisor = 11111111111L;
 		
 		if (cpfNumerico % divisor == 0) {
 			return false;
@@ -66,10 +74,15 @@ public class Cliente {
 			contador += (10 - i) * Character.getNumericValue(cpf.charAt(i));
 		}
 		
-		if (contador % 11 == Character.getNumericValue(cpf.charAt(9)))
+		if (contador % 11 == Character.getNumericValue(cpf.charAt(9))) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
-		
-		return true;
 	}
 	
 }
+
+// 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
