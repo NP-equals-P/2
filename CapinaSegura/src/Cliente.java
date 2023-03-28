@@ -14,6 +14,15 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 	
+	public String toString() {
+		System.out.printf("Nome: %s%n", nome);
+		System.out.printf("CPF: %s%n", cpf);
+		System.out.printf("Data de nascimento: %s%n", dataNascimento);
+		System.out.printf("Idade: %d%n", idade);
+		System.out.printf("Endereço: %s%n", endereco);
+		return "apyr";
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -54,14 +63,15 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 	
-	public boolean validarCPF(String cpf) {
-		cpf = cpf.replaceAll(".", "");
-		cpf = cpf.replaceAll("-", "");
+	public boolean validarCPF() {
+		String cpf = this.cpf.replace(".", "");
+		cpf = cpf.replace("-", "");
+		
 		if (cpf.length() != 11) {
 			return false;
 		}
 		
-		int cpfNumerico = Integer.parseInt(cpf);
+		long cpfNumerico = Long.parseLong(cpf);
 		long divisor = 11111111111L;
 		
 		if (cpfNumerico % divisor == 0) {
@@ -74,10 +84,12 @@ public class Cliente {
 			contador += (10 - i) * Character.getNumericValue(cpf.charAt(i));
 		}
 		
-		if (contador % 11 == Character.getNumericValue(cpf.charAt(9))) {
+		if (11 - (contador % 11) == Character.getNumericValue(cpf.charAt(9))) {
 			return true;
 		}
 		else {
+			System.out.println(contador);
+			System.out.println(Character.getNumericValue(cpf.charAt(9)));
 			return false;
 		}
 		
